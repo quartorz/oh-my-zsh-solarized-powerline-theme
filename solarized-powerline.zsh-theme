@@ -44,7 +44,7 @@ local RESET_COLOR=%f%k%b
 local RESET=%{$RESET_COLOR%}
 local RETURN_CODE="%(?..$FG_COLOR_RED%? ↵$RESET)"
 local ARROW_SYMBOL=''
-local ZSH_TIME=%D{%H:%M}
+local ZSH_TIME='%D{%Y-%m-%d %K:%M:%S}'
 local PADDING=''
 
 if [ $OS = "Darwin" ]; then
@@ -109,7 +109,7 @@ fi
 # arrow symbol for username and ip/host
 if [ $ZSH_POWERLINE_SHOW_USER = true ] || [ $ZSH_POWERLINE_SHOW_IP = true ]; then
 	if [ $ZSH_POWERLINE_SHOW_TIME = true ]; then
-		PROMPT="${PROMPT} ${FG_COLOR_BASE3}${BG_COLOR_BASE01}${ARROW_SYMBOL}"
+		PROMPT="${PROMPT} ${FG_COLOR_BASE3}${BG_COLOR_BLUE}${ARROW_SYMBOL}"
 	else
 		PROMPT="${PROMPT} ${FG_COLOR_BASE3}${BG_COLOR_BASE02}${ARROW_SYMBOL}"
 	fi
@@ -117,8 +117,8 @@ fi
 
 # datetime
 if [ $ZSH_POWERLINE_SHOW_TIME = true ]; then
-	PROMPT="${PROMPT}${FG_COLOR_BASE3}${BG_COLOR_BASE01}${PADDING}${ZSH_TIME}"
-	PROMPT="${PROMPT} ${FG_COLOR_BASE01}${BG_COLOR_BASE02}${ARROW_SYMBOL}"
+	PROMPT="${PROMPT}${FG_COLOR_BASE3}${BG_COLOR_BLUE}${PADDING}${ZSH_TIME}"
+	PROMPT="${PROMPT} ${FG_COLOR_BLUE}${BG_COLOR_BASE02}${ARROW_SYMBOL}"
 	PADDING=' '
 fi
 
@@ -150,13 +150,13 @@ fi
 # single line or double lines
 if [ $ZSH_POWERLINE_SINGLE_LINE = false ]; then
 	PROMPT="${PROMPT} %E
-  ${RESET}${FG_COLOR_BASE02}${ARROW_SYMBOL}"
+${RESET}${FG_COLOR_BASE03}${ARROW_SYMBOL}"
 else
 	PROMPT="${PROMPT} ${RESET}${FG_COLOR_BASE02}${ARROW_SYMBOL}"
 fi
 
 # reset
-PROMPT="$PROMPT ${RESET} "
+PROMPT="$PROMPT${RESET} "
 
 if [ $ZSH_POWERLINE_SHOW_RETURN_CODE = true ]; then
 	RPROMPT="${RETURN_CODE}"
